@@ -1,13 +1,15 @@
 //File: main.cpp
 
 #include <iostream>
+#include "SDL2/SDL.h"
 
 int main()
 {
+	SDL_Init(SDL_INIT_VIDEO);
 
-	std::cout << "Hello World!" << std::endl;
+	std::cout << "hideo" << std::endl;
 
-	std::cout << "Testing..." << std::endl;
+	SDL_Quit();
 
 	return 0;
 }
