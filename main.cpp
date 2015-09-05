@@ -1,15 +1,41 @@
-//File: main.cpp
-
 #include <iostream>
-#include "SDL2/SDL.h"
+#include <cstdlib>
+#include <ctime>
+#include <SDL2/SDL.h>
+#include "surface.h"
+#include "event.h"
 
-int main()
+/*******************/
+/** Main Function **/
+/*******************/
+int main(int argc, char* args[])
 {
-	SDL_Init(SDL_INIT_VIDEO);
+	/**************************/
+	/** Variable Declaration **/
+	/**************************/
+	Event event;
+	Surface surface;
 
-	std::cout << "hideo" << std::endl;
+	/********************/
+	/** Initializatoin **/
+	/********************/
+	surface.init();
 
-	SDL_Quit();
+	/* Main game loop. */
+	while (1)
+	{
+		/* Check if the user closes the window. */
+		if (event.check_quit()) break;
+
+		/* Game Logic goes here. */
+
+		/* Update the Surface after game logic. */
+		surface.update();
+		surface.delay(2000);
+	}
+	
+	/* Close the window before stopping the program */
+	surface.close();
 
 	return 0;
 }
