@@ -13,3 +13,5 @@ clean:
 c:
 	rm a.out
 
+#command to make: make
+#command to run: make run
