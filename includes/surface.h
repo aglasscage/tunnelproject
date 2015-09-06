@@ -27,7 +27,6 @@ public:
 		{
 			gWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, 					  SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, 
 					  SDL_WINDOW_SHOWN);
-			renderer = SDL_CreateRenderer(gWindow, -1, 0);
 			if (gWindow == NULL)
 			{
 				printf("Window could not be created! SDL_Error: %s\n", 
@@ -45,8 +44,6 @@ public:
 	{
 		SDL_DestroyWindow(gWindow);
 		gWindow = NULL;
-		SDL_DestroyRenderer(renderer);
-		renderer = NULL;
 		SDL_Quit();
 	}
 	void update()
@@ -58,10 +55,9 @@ public:
 	{
 		SDL_Delay(milli);
 	}
-private:
+//private:
 	SDL_Window* gWindow;
 	SDL_Surface* gScreenSurface;
-	SDL_Renderer* renderer;
 };
 
 #endif

@@ -17,10 +17,28 @@ int main(int argc, char* args[])
 	Surface surface;
 
 	/********************/
-	/** Initializatoin **/
+	/** Initialization **/
 	/********************/
 	surface.init();
 
+	SDL_Renderer* renderer = NULL;
+	renderer = SDL_CreateRenderer(surface.gWindow, 0, SDL_RENDERER_ACCELERATED);
+
+	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+	
+	SDL_RenderClear(renderer);
+
+	SDL_Rect r;
+	r.x = 50;
+	r.y = 50;
+	r.w = 50;
+	r.h = 50;
+	
+	SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+
+	SDL_RenderFillRect(renderer, &r);
+
+	SDL_RenderPresent(renderer);
 	/* Main game loop. */
 	while (1)
 	{
@@ -28,7 +46,7 @@ int main(int argc, char* args[])
 		if (event.check_quit()) break;
 
 		/* Game Logic goes here. */
-
+	
 		/* Update the Surface after game logic. */
 		surface.update();
 		surface.delay(2000);
