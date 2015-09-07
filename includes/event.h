@@ -6,16 +6,35 @@ class Event
 public:
 	Event()
 	{}
-	bool check_quit()
+	int check_event()
 	{
-		while (SDL_PollEvent(&e) != 0)
+		if (e.type == SDL_QUIT)
 		{
-			if (e.type == SDL_QUIT)
+			return -9999;
+		}
+		if (e.type == SDL_KEYDOWN)
+		{
+			switch(e.key.keysym.sym)
 			{
-				return true;
+				case SDLK_UP:
+					return 0;
+					break;
+				case SDLK_DOWN:
+					return 1;
+					break;
+				case SDLK_LEFT:
+					return 2;
+					break;
+				case SDLK_RIGHT:
+					return 3;
+					break;
 			}
 		}
-		return false;
+	}
+	
+	int poll()
+	{
+		return SDL_PollEvent(&e);
 	}
 private:
 	SDL_Event e;
