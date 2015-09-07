@@ -43,9 +43,6 @@ public:
 	}
 	void close()
 	{
-		//Deallocate surface
-		//SDL_FreeSurface(subImage);
-		//subImage = NULL;
 		//Destroy Window
 		SDL_DestroyWindow(gWindow);
 		gWindow = NULL;
