@@ -22,23 +22,34 @@ int main(int argc, char* args[])
 	/** Initialization **/
 	/********************/
 	surface.init();
-
-	/* Main game loop. */
+	/* Main game loop.*/
 	while (1)
 	{
-		/* Check if the user closes the window. */
-		if (event.check_quit()) break;
+		/* event handler */
+		if (event.poll() != 0)
+		{
+			int i = event.check_event();
+			
+			if (i == -9999)
+			{
+				break;	
+			}	
 
-		/* Game Logic goes here. */	
-
-		SDL_BlitSurface(sub.subImage, NULL, surface.gScreenSurface, NULL);
+			if (i >= 0 && i <= 7)
+			{
+				sub.move(i);
+			}				
+		}
+		SDL_BlitScaled(sub.subImage, NULL, surface.gScreenSurface, 
+						&sub.subRect);
 
 		/* Update the Surface after game logic. */
 		surface.update();
-		surface.delay(2000);
+		surface.delay(10);
 	}
 
 	/* Close the window before stopping the program */
+	sub.cleanup();
 	surface.close();
 
 	return 0;
