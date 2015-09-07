@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include <stdio.h>
+#include <sub.h>
 
 const int SCREEN_WIDTH = 640;
 const int SCREEN_HEIGHT = 480;
@@ -42,8 +43,13 @@ public:
 	}
 	void close()
 	{
+		//Deallocate surface
+		//SDL_FreeSurface(subImage);
+		//subImage = NULL;
+		//Destroy Window
 		SDL_DestroyWindow(gWindow);
 		gWindow = NULL;
+		//Quit
 		SDL_Quit();
 	}
 	void update()
