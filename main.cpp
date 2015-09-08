@@ -5,6 +5,7 @@
 #include "surface.h"
 #include "event.h"
 #include "sub.h"
+#include "background.h"
 
 /*******************/
 /** Main Function **/
@@ -17,6 +18,7 @@ int main(int argc, char* args[])
 	Event event;
 	Surface surface;
 	Sub sub;
+	Background background;
 
 	/********************/
 	/** Initialization **/
@@ -40,6 +42,8 @@ int main(int argc, char* args[])
 				sub.move(i);
 			}				
 		}
+		SDL_BlitScaled(background.bgImage, NULL, surface.gScreenSurface, 
+						&background.bgRect);
 		SDL_BlitScaled(sub.subImage, NULL, surface.gScreenSurface, 
 						&sub.subRect);
 

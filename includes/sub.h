@@ -13,7 +13,7 @@ class Sub
 public:	
 	Sub()
 	{
-		subImage = SDL_LoadBMP("includes/submarine.bmp");
+		subImage = SDL_LoadBMP("image/submarine.bmp");
 		subRect.x = 640 / 2 - SUB_WIDTH / 2;
 		subRect.y = 480 / 2 - SUB_HEIGHT / 2;
 		subRect.h = SUB_HEIGHT;
@@ -44,9 +44,20 @@ public:
 		SDL_FreeSurface(subImage);
 		subImage = NULL;
 	}
+/*
+	SDL_Surface getImage()
+	{
+		return this->*subImage;
+	}
+
+	SDL_Rect getRect()
+	{
+		return subRect;
+	}
+*/		
 //private:
-	SDL_Surface *subImage;
 	SDL_Rect subRect;
+	SDL_Surface *subImage;
 };
 
 #endif
