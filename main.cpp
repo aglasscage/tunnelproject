@@ -1,60 +1,41 @@
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
 #include <SDL2/SDL.h>
-#include "surface.h"
-#include "event.h"
-#include "sub.h"
-#include "background.h"
+#include <SDL_image.h>
+#include <stdio.h>
+#include <string>
+#include <cmath>
+#include <iostream>
+#include "Constants.h"
+#include "Globals.h"
+#include "Terrain.h"
+#include "GameFunctions.h"
 
-/*******************/
-/** Main Function **/
-/*******************/
-int main(int argc, char* args[])
+int main()
 {
-	/**************************/
-	/** Variable Declaration **/
-	/**************************/
-	Event event;
-	Surface surface;
-	Sub sub;
-	Background background;
+	bool quit = false;
+	Terrain terrain;
+	Event e;
 
-	/********************/
-	/** Initialization **/
-	/********************/
-	surface.init();
-	/* Main game loop.*/
-	while (1)
+	/** Initialize SDL2 **/
+	init();
+
+	while(1)
 	{
-		/* event handler */
-		if (event.poll() != 0)
-		{
-			int i = event.check_event();
-			
-			if (i == -9999)
-			{
-				break;	
-			}	
+		if (quit) break;
+		/** Handle events and user input **/
+		eventHandler(e, quit);
 
-			if (i >= 0 && i <= 7)
-			{
-				sub.move(i);
-			}				
-		}
-		SDL_BlitScaled(background.bgImage, NULL, surface.gScreenSurface, 
-						&background.bgRect);
-		SDL_BlitScaled(sub.subImage, NULL, surface.gScreenSurface, 
-						&sub.subRect);
+		/** Draw functions **/
+		background(g_renderer);
+		terrain.draw(g_renderer);
+		SDL_RenderPresent(g_renderer);
 
-		/* Update the Surface after game logic. */
-		surface.update();
-		surface.delay(10);
+		/** Logic and update functions **/
+		terrain.update();
+
+		delay(10);
 	}
 
-	/* Close the window before stopping the program */
-	sub.cleanup();
-	surface.close();
+	close();
 
 	return 0;
 }
