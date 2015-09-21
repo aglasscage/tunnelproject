@@ -15,11 +15,11 @@ int main()
 	bool quit = false;
 	Terrain terrain;
 	Event e;
-	Sub sub;
 
 	/** Initialize SDL2 **/
 	init();
 
+	Sub sub;
 	while(1)
 	{
 	if (quit) break;

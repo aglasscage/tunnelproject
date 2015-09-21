@@ -10,7 +10,7 @@ void init()
 
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 
-	g_window = SDL_CreateWindow("Random Terrain Simulator", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, W,
+	g_window = SDL_CreateWindow("The Life Aquatic with Steve Zissou", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, W,
 		H, SDL_WINDOW_SHOWN);
 
 	g_renderer = SDL_CreateRenderer(g_window, -1, SDL_RENDERER_ACCELERATED);
@@ -45,9 +45,9 @@ SDL_Texture* load_texture(std::string path)
 	SDL_Texture* new_texture = NULL;
 
 	SDL_Surface* loaded_surface = IMG_Load(path.c_str());
-
+	
 	new_texture = SDL_CreateTextureFromSurface(g_renderer, loaded_surface);
-
+	if (new_texture == NULL) printf("CTFS Error: %s\n", SDL_GetError());
 	SDL_FreeSurface(loaded_surface);
 
 	return new_texture;
