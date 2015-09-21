@@ -8,3 +8,4 @@ SDL_Window* g_window = NULL;
 SDL_Renderer* g_renderer = NULL;
 
 #endif
+

@@ -11,6 +11,9 @@ const int SEED_Y_BOT = 379;
 const int SEED_H = 100;
 const int DY = 2;
 const int HEIGHT_OF_SUB = 20;
+//Submarine Constants
+const int SUB_HEIGHT = 25;
+const int SUB_WIDTH = 25;
 
 typedef SDL_Renderer* Renderer;
 typedef SDL_Event Event;
