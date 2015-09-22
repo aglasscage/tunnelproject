@@ -38,7 +38,6 @@ int main()
 
 		/** Logic and update functions **/
 		terrain.update();
-
 		SDL_UpdateWindowSurface(g_window);
 
 		delay(10);
