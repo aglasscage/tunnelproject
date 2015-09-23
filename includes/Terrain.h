@@ -23,6 +23,26 @@ public:
     	}
     }
     void update();
+    bool collision(const SDL_Rect & r)
+    {
+        /*
+        * This is for collision detection. We're just
+        * checking to see if the sub is higher or lower
+        * on the screen than the top or bottom walls.
+        * You notice the constant "5" is just to make
+        * the hit box slightly smaller than the image
+        * (5 pixels smaller in each direction).
+        */
+        for (int i = r.x + 5; i < r.x + r.w - 5; i++)
+        {
+            if (r.y + 5 < tWall[i].getY()
+                || r.y + r.h - 5 > bWall[i].getY())
+            {
+                return 0;
+            }
+        }
+        return 1;
+    }
 private:
 	Wall tWall[WALL_TOTAL];
     Wall bWall[WALL_TOTAL];

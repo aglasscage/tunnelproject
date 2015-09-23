@@ -35,23 +35,19 @@ int main()
 		//Render texture to the screen
 		background(g_renderer);
 		terrain.draw(g_renderer);
-		SDL_RenderCopy(g_renderer, sub.subTexture, NULL, &sub.subRect);
+		if (sub.getAlive())
+		{
+			SDL_RenderCopy(g_renderer, sub.subTexture, NULL, &sub.subRect);
+		}
 		//Update Screen
 		SDL_RenderPresent(g_renderer);
-
 		/** Logic and update functions **/
-		if (checkMove == true)
-		{
-			sub.dy = -10;
-			checkMove = false;
-		}
-		sub.moveSub();
-		if (sub.dy <= 3)
-		{
-			sub.dy++;
-		}
-
+		sub.movement();
 		terrain.update();
+		if (sub.getAlive())
+		{
+			sub.setAlive(terrain.collision(sub.getRect()));
+		}
 		SDL_UpdateWindowSurface(g_window);
 		delay(10);
 	}

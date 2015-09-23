@@ -10,6 +10,7 @@ class Sub
 {
 public:
 	Sub()
+		: alive_(true), dy(0)
 	{
 		subTexture = load_texture("includes/sub.png");
 		subRect.x = W / 2 - SUB_WIDTH / 2;
@@ -23,13 +24,41 @@ public:
 	{
 		subRect.y = newY;			
 	}
-	
+	bool setAlive(const bool & alive)
+	{
+		alive_ = alive;
+	}
+	bool getAlive() const
+	{
+		return alive_;
+	}
+	SDL_Rect getRect() const
+	{
+		return subRect;
+	}
+	void movement()
+	{
+		const Uint8 * keystate = SDL_GetKeyboardState(NULL);
+   	 	if(keystate[SDL_SCANCODE_SPACE])
+    	{
+    		dy = -10;
+    	}
+	    else
+	    {
+	    }
+	    if (dy <= 3)
+		{
+			dy++;
+		}
+	    subRect.y += dy;
+	}
 	void moveSub()		{ subRect.y += dy; } 
 //private:
 	SDL_Texture* subTexture = NULL;
 	SDL_Rect subRect;
-	int dy = 0;
+	int dy;
+private:
+	bool alive_;
 };
 
 #endif
-

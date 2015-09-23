@@ -30,7 +30,7 @@ public:
 	void checkSpace();
 	//void updateBit(const int &, const bool &);
 	void init(const int &, const bool &, int h=99);
-	void randomize(const bool &);
+	void randomize(const bool &, const RandWall &);
 private:
 	int dy_; //Change in Y
 	int t_;

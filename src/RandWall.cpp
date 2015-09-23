@@ -179,7 +179,7 @@ void RandWall::checkSpace()
 	}
 	*/
 }
-void RandWall::randomize(const bool & orientation)
+void RandWall::randomize(const bool & orientation, const RandWall & r)
 {
 	int dy;
 	if (getT() < 20 || getT() > get_tStart() - 10)
@@ -195,8 +195,6 @@ void RandWall::randomize(const bool & orientation)
 	{
 		dy = 2 * getDY();
 	}
-	//int dy = (rand() % 2) * getDY();
-		//updateBit(dy, d);
 	incY(dy);
 	if (orientation == UP)
 	{
@@ -216,7 +214,12 @@ void RandWall::randomize(const bool & orientation)
 	{
 		setDY(0);
 	}
-
+	if (abs(r.getY() - getY()) < 80
+		&& getT() > 30
+		&& orientation != getD())
+	{
+		setT(30);
+	}
 	checkSpace();
 	decT();
 }

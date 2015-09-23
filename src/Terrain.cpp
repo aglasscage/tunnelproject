@@ -21,8 +21,8 @@ Terrain::Terrain()
 }
 void Terrain::update()
 {
-	topRand.randomize(TOP);
-	botRand.randomize(BOT);
+	topRand.randomize(TOP, botRand);
+	botRand.randomize(BOT, topRand);
 	for (int i = 0; i < WALL_TOTAL - 1; i++)
 	{
 		tWall[i] = tWall[i + 1];
