@@ -54,9 +54,6 @@ void RandWall::setT()
 {
 	t_ = rand() % 50 + 50;
 	set_tStart(t_);
-
-	int r = rand() % 2 + 1;
-	setIncline(r);
 }
 void RandWall::set_tStart(const int & tStart)
 {
@@ -70,7 +67,7 @@ void RandWall::setIncline(const int & incline)
 {
 	incline_ = incline;
 }
-void RandWall::swapD()
+void RandWall::swapD(const bool & orientation)
 {
 	if (d_ == DOWN)
 	{
@@ -79,6 +76,12 @@ void RandWall::swapD()
 	else
 	{
 		d_ = DOWN;
+	}
+
+	if (d_ != orientation)
+	{
+		int r = rand() % 3 + 1;
+		setIncline(r);
 	}
 }
 /** Other Functions **/
@@ -205,9 +208,13 @@ void RandWall::randomize(const bool & orientation, const RandWall & r)
 	}
 	else
 	{
-		if (getIncline() == 2 && (getT() < 50 || getT() > get_tStart() - 40))
+		if (getIncline() > 1 && (getT() < 50 || getT() > get_tStart() - 40))
 		{
 			dy = 3 * getDY();
+		}
+		else if (getIncline() == 2 && (getT() < 60 || getT() > get_tStart() - 50))
+		{
+			dy = 4 * getDY();
 		}
 		else
 		{
@@ -225,7 +232,7 @@ void RandWall::randomize(const bool & orientation, const RandWall & r)
 	}
 	if (getT() == 0)
 	{	
-		swapD();
+		swapD(orientation);
 		getD() == UP ? setDY(-1) : setDY(1);
 		decT();
 	}
@@ -233,7 +240,7 @@ void RandWall::randomize(const bool & orientation, const RandWall & r)
 	{
 		setDY(0);
 	}
-	if (abs(r.getY() - getY()) < 80
+	if (abs(r.getY() - getY()) < 100
 		&& getT() > 30
 		&& orientation != getD())
 	{

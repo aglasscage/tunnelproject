@@ -26,7 +26,7 @@ public:
 	void set_tStart(const int &);
 	void decT();
 	void setD(const bool &);
-	void swapD();
+	void swapD(const bool &);
 	void setIncline(const int &);
 	/** Other Functions **/
 	void checkSpace();
