@@ -18,6 +18,7 @@ public:
 	int getT() const;
 	int get_tStart() const;
 	bool getD() const;
+	int getIncline() const;
 	/** Mutators **/
 	void setDY(const int &);
 	void setT(const int &);
@@ -26,6 +27,7 @@ public:
 	void decT();
 	void setD(const bool &);
 	void swapD();
+	void setIncline(const int &);
 	/** Other Functions **/
 	void checkSpace();
 	//void updateBit(const int &, const bool &);
@@ -35,6 +37,7 @@ private:
 	int dy_; //Change in Y
 	int t_;
 	int tStart_;
+	int incline_;
 	bool d_; //Direction. (0 = North) (1 = South)
 };
 

@@ -11,6 +11,7 @@
 
 /** Constructor **/
 RandWall::RandWall()
+	: incline_(1)
 {
 	setT();
 	if (rand() % 2 == 1) dy_ = 1;
@@ -36,6 +37,10 @@ bool RandWall::getD() const
 {
 	return d_;
 }
+int RandWall::getIncline() const
+{
+	return incline_;
+}
 /** Mutators **/
 void RandWall::setDY(const int & dy)
 {	
@@ -49,6 +54,9 @@ void RandWall::setT()
 {
 	t_ = rand() % 50 + 50;
 	set_tStart(t_);
+
+	int r = rand() % 2 + 1;
+	setIncline(r);
 }
 void RandWall::set_tStart(const int & tStart)
 {
@@ -57,6 +65,10 @@ void RandWall::set_tStart(const int & tStart)
 void RandWall::setD(const bool & d)
 {
 	d_ = d;
+}
+void RandWall::setIncline(const int & incline)
+{
+	incline_ = incline;
 }
 void RandWall::swapD()
 {
@@ -193,7 +205,14 @@ void RandWall::randomize(const bool & orientation, const RandWall & r)
 	}
 	else
 	{
-		dy = 2 * getDY();
+		if (getIncline() == 2 && (getT() < 50 || getT() > get_tStart() - 40))
+		{
+			dy = 3 * getDY();
+		}
+		else
+		{
+			dy = 2 * getDY();
+		}
 	}
 	incY(dy);
 	if (orientation == UP)
