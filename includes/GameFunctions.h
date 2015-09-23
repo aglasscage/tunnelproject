@@ -3,6 +3,7 @@
 
 #include "SDL2/SDL.h"
 #include "Constants.h"
+#include "Sub.h"
 
 void init()
 {
@@ -22,7 +23,7 @@ void init()
 	IMG_Init((img_flags)&img_flags);
 }
 
-void eventHandler(Event & e, bool & quit)
+void eventHandler(Event & e, bool & quit, bool & checkMove)
 {
 	while(SDL_PollEvent(&e) != 0)
 	{
@@ -30,6 +31,19 @@ void eventHandler(Event & e, bool & quit)
 		if(e.type == SDL_QUIT)
 		{
 			quit = true;
+		}
+		else if(e.type == SDL_KEYDOWN)
+		{
+			switch(e.key.keysym.sym)
+			{
+				case SDLK_SPACE:
+				checkMove = true;
+				break;
+				
+				default:
+				std::cout << "Default Entered" << std::endl;
+				break;
+			}
 		}
 	}
 }

@@ -13,18 +13,19 @@
 int main()
 {
 	bool quit = false;
+	bool checkMove = false;
 	Terrain terrain;
 	Event e;
 
 	/** Initialize SDL2 **/
 	init();
-
+	/** Initialize Submarine **/
 	Sub sub;
 	while(1)
 	{
 	if (quit) break;
 		/** Handle events and user input **/
-		eventHandler(e, quit);
+		eventHandler(e, quit, checkMove);
 
 		/** Draw functions **/
 		//Clear the last frame
@@ -37,9 +38,19 @@ int main()
 		SDL_RenderPresent(g_renderer);
 
 		/** Logic and update functions **/
+		if (checkMove == true)
+		{
+			sub.dy = -10;
+			checkMove = false;
+		}
+		sub.moveSub();
+		if (sub.dy <= 3)
+		{
+			sub.dy++;
+		}
+
 		terrain.update();
 		SDL_UpdateWindowSurface(g_window);
-
 		delay(10);
 	}
 	

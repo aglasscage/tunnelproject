@@ -17,16 +17,18 @@ public:
 		subRect.h = SUB_HEIGHT;
 		subRect.w = SUB_WIDTH;
 	}
-	int getSuby(Sub s) const { return subRect.y; }
-	void setSuby(Sub s, int newY)
-	{
-		subRect.y += newY;			
-	}
-
+	int getSuby() const { return subRect.y; }
 	
+	void setSuby(int newY)
+	{
+		subRect.y = newY;			
+	}
+	
+	void moveSub()		{ subRect.y += dy; } 
 //private:
 	SDL_Texture* subTexture = NULL;
 	SDL_Rect subRect;
+	int dy = 0;
 };
 
 #endif
