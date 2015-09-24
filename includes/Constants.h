@@ -14,7 +14,7 @@ const int HEIGHT_OF_SUB = 20;
 //Submarine Constants
 const int SUB_HEIGHT = 25;
 const int SUB_WIDTH = 25;
-
+//Other
 typedef SDL_Renderer* Renderer;
 typedef SDL_Event Event;
 

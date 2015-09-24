@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 #include <stdio.h>
 #include <string>
 #include <cmath>
@@ -8,6 +9,7 @@
 #include "Globals.h"
 #include "Terrain.h"
 #include "GameFunctions.h"
+#include "Score.h"
 #include "Sub.h"
 
 // testing github
@@ -18,9 +20,11 @@ int main()
 	bool checkMove = false;
 	Terrain terrain;
 	Event e;
+	Score score;
 
 	/** Initialize SDL2 **/
 	init();
+	TTF_Init();
 	/** Initialize Submarine **/
 	Sub sub;
 	while(1)
@@ -39,6 +43,8 @@ int main()
 		{
 			SDL_RenderCopy(g_renderer, sub.subTexture, NULL, &sub.subRect);
 		}
+		//Render Score
+		SDL_RenderCopy(g_renderer, score.scoreText, NULL, &score.scoreRect);
 		//Update Screen
 		SDL_RenderPresent(g_renderer);
 		/** Logic and update functions **/
@@ -54,7 +60,8 @@ int main()
 	
 	//Cleanup
 	SDL_DestroyTexture(sub.subTexture);
-	
+	SDL_DestroyTexture(score.scoreText);
+		
 	close();
 
 	return 0;

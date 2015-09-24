@@ -11,8 +11,9 @@ void init()
 
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 
-	g_window = SDL_CreateWindow("The Life Aquatic with Steve Zissou", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, W,
-		H, SDL_WINDOW_SHOWN);
+	g_window = SDL_CreateWindow("The Life Aquatic with Steve Zissou", 
+			   SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, W, H, 
+			   SDL_WINDOW_SHOWN);
 
 	g_renderer = SDL_CreateRenderer(g_window, -1, SDL_RENDERER_ACCELERATED);
 
