@@ -41,12 +41,12 @@ public:
 		const Uint8 * keystate = SDL_GetKeyboardState(NULL);
    	 	if(keystate[SDL_SCANCODE_SPACE])
     	{
-    		dy = -10;
+    		dy = -3;
     	}
 	    else
 	    {
 	    }
-	    if (dy <= 3)
+	    if (dy <= 1)
 		{
 			dy++;
 		}
