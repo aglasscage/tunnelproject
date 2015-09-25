@@ -20,13 +20,12 @@ int main()
 	bool checkMove = false;
 	Terrain terrain;
 	Event e;
-	Score score;
 
 	/** Initialize SDL2 **/
 	init();
-	TTF_Init();
 	/** Initialize Submarine **/
 	Sub sub;
+	Score score;
 	while(1)
 	{
 	if (quit) break;
@@ -63,6 +62,5 @@ int main()
 	SDL_DestroyTexture(score.scoreText);
 		
 	close();
-
 	return 0;
 }

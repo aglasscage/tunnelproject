@@ -7,7 +7,8 @@
 
 void init()
 {
-	SDL_Init(SDL_INIT_VIDEO);
+	TTF_Init();
+	SDL_Init(SDL_INIT_EVERYTHING);
 
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "1");
 
