@@ -9,7 +9,6 @@ SDL_Renderer* g_renderer = NULL;
 //Colors
 const SDL_Color WHITE = {255, 255, 255, 255};
 //Fonts
-//TTF_Font* Sans = TTF_OpenFont("includes/Subterran.ttf", 24);
 
 
 #endif
