@@ -8,8 +8,5 @@ SDL_Window* g_window = NULL;
 SDL_Renderer* g_renderer = NULL;
 //Colors
 const SDL_Color WHITE = {255, 255, 255, 255};
-//Fonts
-
-
 #endif
 

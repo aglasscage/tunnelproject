@@ -12,8 +12,6 @@
 #include "Score.h"
 #include "Sub.h"
 
-// testing github
-
 int main()
 {
 	bool quit = false;
@@ -31,7 +29,7 @@ int main()
 	if (quit) break;
 		/** Handle events and user input **/
 		eventHandler(e, quit, checkMove);
-
+		
 		/** Draw functions **/
 		//Clear the last frame
 		SDL_RenderClear(g_renderer);
@@ -44,6 +42,8 @@ int main()
 		}
 		//Render Score
 		SDL_RenderCopy(g_renderer, score.scoreText, NULL, &score.scoreRect);
+		score.printScore();
+		if (SDL_RenderCopy(g_renderer, score.pointsText, NULL, &score.pointsRect) < 0) printf("RenderCopy failed: %s\n", SDL_GetError());
 		//Update Screen
 		SDL_RenderPresent(g_renderer);
 		/** Logic and update functions **/
@@ -54,7 +54,12 @@ int main()
 			sub.setAlive(terrain.collision(sub.getRect()));
 		}
 		SDL_UpdateWindowSurface(g_window);
+		if (sub.getAlive() == true)
+		{
+			++score.points;
+		}
 		delay(10);
+		score.freeSurface();
 	}
 	
 	//Cleanup
