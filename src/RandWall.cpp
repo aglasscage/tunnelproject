@@ -10,7 +10,7 @@
 
 /** Constructor **/
 RandWall::RandWall()
-	: incline_(1)
+	: incline_(0)
 {
 	setT();
 	if (rand() % 2 == 1) dy_ = 1.0;
@@ -57,10 +57,33 @@ void RandWall::setT(const int & t)
 {
 	t_ = t;
 }
+void RandWall::setT(const bool & orientation)
+{
+	if (orientation == TOP && getDY() == 1)
+	{
+		t_ = rand() % 100 + 40;
+		set_tStart(t_);
+		int r = rand() % 4;
+		setIncline(r);
+	}
+	else if (orientation == BOT && getDY() == -1)
+	{
+		t_ = rand() % 100 + 40;
+		set_tStart(t_);
+		int r = rand() % 4;
+		setIncline(r);
+	}
+	else
+	{
+		setT(get_tStart());
+	}
+}
 void RandWall::setT()
 {
 	t_ = rand() % 50 + 50;
 	set_tStart(t_);
+	int r = rand() % 2;
+	setIncline(r);
 }
 void RandWall::set_tStart(const int & tStart)
 {
@@ -74,33 +97,16 @@ void RandWall::setIncline(const int & incline)
 {
 	incline_ = incline;
 }
-void RandWall::swapD(const bool & orientation)
-{
-	if (d_ == DOWN)
-	{
-		d_ = UP;
-	}
-	else
-	{
-		d_ = DOWN;
-	}
-
-	if (d_ != orientation)
-	{
-		int r = rand() % 3 + 1;
-		setIncline(r);
-	}
-}
 /** Other Functions **/
 void RandWall::incY(const int & n)
 {
 	setY(getY() + n);
 }
-void RandWall::decT()
+void RandWall::decT(const bool & orientation)
 {
 	if (t_ == -1)
 	{
-		setT();
+		setT(orientation);
 	}
 	else
 	{
@@ -125,6 +131,108 @@ void RandWall::checkSpace()
 void RandWall::randomize(const bool & orientation, const RandWall & r)
 {
 	int dy;
+	float slopeZero;
+	float piece;
+
+	switch (getIncline())
+	{
+		case 0:
+			piece = get_tStart() / 6.0;
+			if (getT() <= piece * 2 || getT() > get_tStart() - piece)
+			{
+				if (getT() % 4 == 0) dy = 1 * getDY();
+				else dy = 0;
+			}
+			else if ((getT() > piece * 2 && getT() <= piece * 3) ||
+					 (getT() <= get_tStart() - piece && 
+					  getT() > get_tStart() - piece * 2))
+			{
+				if (getT() % 3 == 0) dy = 1 * getDY();
+				else dy = 0;
+			}
+			else
+			{
+				if (getT() % 2 == 0) dy = 1 * getDY();
+				else dy = 0;
+			}
+			break;
+		case 1:
+			piece = get_tStart() / 6.0;
+			if (getT() <= piece * 2 || getT() > get_tStart() - piece)
+			{
+				if (getT() % 4 == 0) dy = 1 * getDY();
+				else dy = 0;
+			}
+			else if ((getT() > piece * 2 && getT() <= piece * 3) ||
+					 (getT() <= get_tStart() - piece && 
+					  getT() > get_tStart() - piece * 2))
+			{
+				if (getT() % 2 == 0) dy = 1 * getDY();
+				else dy = 0;
+			}
+			else
+			{
+				dy = 1 * getDY();
+			}
+			break;
+		case 2:
+			piece = get_tStart() / 8.0;
+			if (getT() <= piece * 2 || getT() > get_tStart() - piece)
+			{
+				if (getT() % 4 == 0) dy = 1 * getDY();
+				else dy = 0;
+			}
+			else if ((getT() > piece * 2 && getT() <= piece * 3) ||
+					 (getT() <= get_tStart() - piece && 
+					  getT() > get_tStart() - piece * 2))
+			{
+				if (getT() % 2 == 0) dy = 1 * getDY();
+				else dy = 0;
+			}
+			else if ((getT() > piece * 2 && getT() <= piece * 4) ||
+					 (getT() <= get_tStart() - piece && 
+					  getT() > get_tStart() - piece * 3))
+			{
+				dy = 1 * getDY();
+			}
+			else
+			{
+				dy = 2 * getDY();
+			}
+			break;
+		case 3:
+			piece = get_tStart() / 10.0;
+			if (getT() <= piece * 2 || getT() > get_tStart() - piece)
+			{
+				if (getT() % 4 == 0) dy = 1 * getDY();
+				else dy = 0;
+			}
+			else if ((getT() > piece * 2 && getT() <= piece * 3) ||
+					 (getT() <= get_tStart() - piece && 
+					  getT() > get_tStart() - piece * 2))
+			{
+				if (getT() % 2 == 0) dy = 1 * getDY();
+				else dy = 0;
+			}
+			else if ((getT() > piece * 2 && getT() <= piece * 4) ||
+					 (getT() <= get_tStart() - piece && 
+					  getT() > get_tStart() - piece * 3))
+			{
+				dy = 1 * getDY();
+			}
+			else if ((getT() > piece * 2 && getT() <= piece * 5) ||
+					 (getT() <= get_tStart() - piece && 
+					  getT() > get_tStart() - piece * 4))
+			{
+				dy = 2 * getDY();
+			}
+			else
+			{
+				dy = 3 * getDY();
+			}
+			break;
+	}
+	/*
 	if (getT() < 20 || getT() > get_tStart() - 10)
 	{
 		if (getT() % 2 == 0) dy = 1 * getDY();
@@ -149,13 +257,13 @@ void RandWall::randomize(const bool & orientation, const RandWall & r)
 			dy = 2 * getDY();
 		}
 	}
+	*/
 	incY(dy);
 	if (getT() == 0)
 	{	
 		getDY() > 0 ? setDY(-1.0) : setDY(1.0);
-		decT();
 	}
-	else if (getT() == 10)
+	else if (getT() == int(piece))
 	{
 		getDY() > 0 ? setDY(.5) : setDY(-.5);
 	}
@@ -170,5 +278,5 @@ void RandWall::randomize(const bool & orientation, const RandWall & r)
 	}
 
 	checkSpace();
-	decT();
+	decT(orientation);
 }

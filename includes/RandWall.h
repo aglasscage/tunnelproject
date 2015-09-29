@@ -21,12 +21,12 @@ public:
 	void setY(const int &);
 	void setDY(const float &);
 	void setT(const int &);
+	void setT(const bool &);
 	void setT();
 	void set_tStart(const int &);
-	void decT();
+	void decT(const bool &);
 	void incY(const int &);
 	void setD(const bool &);
-	void swapD(const bool &);
 	void setIncline(const int &);
 	/** Other Functions **/
 	void checkSpace();
