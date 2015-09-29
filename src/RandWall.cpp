@@ -159,13 +159,16 @@ void RandWall::randomize(const bool & orientation, const RandWall & r)
 	{
 		getDY() > 0 ? setDY(.5) : setDY(-.5);
 	}
-	if (abs(r.getY() - getY()) < 100
-		&& getT() > 30
-		&& orientation != getD())
+
+	if (abs(getY() - r.getY()) < 100 && getT() > 30)
 	{
-		setT(30);
+		if (orientation == BOT && getDY() < 0
+			|| orientation == TOP && getDY() > 0)
+		{
+			setT(30);
+		}
 	}
+
 	checkSpace();
 	decT();
-
 }
