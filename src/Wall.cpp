@@ -20,14 +20,22 @@ void Wall::init(const int & x, const int & orientation)
 	setO(orientation);
 }
 /** Accessors **/
+int Wall::getX() const
+{
+	return x_;
+}
+int Wall::getY() const
+{
+	return y_;
+}
 bool Wall::getO() const
 {
 	return orientation_;
 }
 int Wall::getY2()
 {
-	int y2 = getY();
-	getO() == UP ? y2 -= getH() : y2 += getH();
+	int y2;
+	getO() == UP ? y2 = 0 : y2 = H - 1;
 	return y2;
 }
 int Wall::getX2()
@@ -40,6 +48,14 @@ int Wall::getX2()
 	return getX();
 }
 /** Mutators **/
+void Wall::setX(const int & x)
+{
+	x_ = x;
+}
+void Wall::setY(const int & y)
+{
+	y_ = y;
+}
 void Wall::setO(const int & orientation)
 {
 	orientation_ = orientation;
@@ -56,7 +72,6 @@ Wall & Wall::operator=(const RandWall & r)
 	if (*this != r)
 	{
 		setY(r.getY());
-		setH(r.getH());
 	}
 }
 Wall & Wall::operator=(const Wall & c)
@@ -70,7 +85,6 @@ Wall & Wall::operator=(const Wall & c)
 	if (*this != c)
 	{
 		setY(c.getY());
-		setH(c.getH());
 	}
 }
 bool Wall::operator!=(const RandWall & r)
@@ -80,7 +94,7 @@ bool Wall::operator!=(const RandWall & r)
 	* are already equal to eachother before we perform
 	* the = operator.
 	*/
-	if (getY() == r.getY() && getH() == r.getH())
+	if (getY() == r.getY())
 	{
 		return false;
 	}
@@ -93,7 +107,7 @@ bool Wall::operator!=(const Wall & c)
 	* is already equal to our RandWall. If they are already
 	* equal then we won't perform the = operator.
 	*/
-	if (getY() == c.getY() && getH() == c.getH())
+	if (getY() == c.getY())
 	{
 		return false;
 	}
