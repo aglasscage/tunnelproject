@@ -21,15 +21,15 @@ public:
 	void setY(const int &);
 	void setDY(const float &);
 	void setT(const int &);
-	void setT(const bool &);
+	void setT(const bool &, const RandWall &);
 	void setT();
 	void set_tStart(const int &);
-	void decT(const bool &);
+	void decT(const bool &, const RandWall &);
 	void incY(const int &);
 	void setD(const bool &);
 	void setIncline(const int &);
 	/** Other Functions **/
-	void checkSpace();
+	void checkSpace(const bool &, const RandWall &);
 	//void updateBit(const int &, const bool &);
 	void init(const int &);
 	void randomize(const bool &, const RandWall &);
