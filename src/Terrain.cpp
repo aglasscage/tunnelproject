@@ -9,8 +9,8 @@
 
 Terrain::Terrain()
 {
-	topRand.init(SEED_Y_TOP, UP);
-	botRand.init(SEED_Y_BOT, DOWN);
+	topRand.init(SEED_Y_TOP);
+	botRand.init(SEED_Y_BOT);
 
 	for (int i = 0; i < WALL_TOTAL; i++)
 	{
