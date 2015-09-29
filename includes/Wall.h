@@ -5,7 +5,6 @@
 #ifndef WALL_H
 #define WALL_H
 
-#include "WallObject.h"
 #include "RandWall.h"
 #include "Constants.h"
 
