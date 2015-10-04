@@ -1,7 +1,7 @@
 #ifndef SCORE_H
 #define SCORE_H
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 //#include <Globals.h>
 #include <GameFunctions.h>
 #include <SDL_ttf.h>

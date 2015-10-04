@@ -5,7 +5,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include "Wall.h"
 #include "Constants.h"
 

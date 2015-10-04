@@ -1,7 +1,7 @@
 #ifndef GAMEFUNCTIONS_H
 #define GAMEFUNCTIONS_H
 
-#include "SDL2/SDL.h"
+#include "SDL.h"
 #include "Constants.h"
 #include "Sub.h"
 

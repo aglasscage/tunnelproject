@@ -1,7 +1,7 @@
 #ifndef SUB_H
 #define SUB_H
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <Constants.h>
 #include <Globals.h>
 #include <GameFunctions.h>

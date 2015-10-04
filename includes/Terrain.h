@@ -5,7 +5,7 @@
 #ifndef TERRAIN_H
 #define TERRAIN_H
 
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include "RandWall.h"
 #include "Wall.h"
 #include "Constants.h"

@@ -1,7 +1,7 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-#include "SDL2/SDL.h"
+#include "SDL.h"
 
 const int W = 640;
 const int H = 480;
