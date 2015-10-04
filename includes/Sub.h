@@ -10,10 +10,10 @@ class Sub
 {
 public:
 	Sub()
-		: alive_(true), dy(0), momentum_(0)
+		: alive_(true), dy(0), momentum_(0), deathCounter(100)
 	{
 		subTexture = load_texture("includes/sub.png");
-		subRect.x = W / 2 - SUB_WIDTH / 2;
+		subRect.x = W / 4 - SUB_WIDTH / 2;
 		subRect.y = H / 2 - SUB_HEIGHT / 2;
 		subRect.h = SUB_HEIGHT;
 		subRect.w = SUB_WIDTH;
@@ -42,6 +42,14 @@ public:
 	bool getAlive() const
 	{
 		return alive_;
+	}
+	void decDeathCounter()
+	{
+		deathCounter--;
+	}
+	int getDeathCounter()
+	{
+		return deathCounter;
 	}
 	SDL_Rect getRect() const
 	{
@@ -103,6 +111,7 @@ public:
 	SDL_Texture* subTexture = NULL;
 	SDL_Rect subRect;
 private:
+	int deathCounter;
 	int dy;
 	bool alive_;
 	int momentum_;

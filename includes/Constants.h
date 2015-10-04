@@ -6,8 +6,8 @@
 const int W = 640;
 const int H = 480;
 const int WALL_TOTAL = W;
-const int SEED_Y_TOP = 99;
-const int SEED_Y_BOT = 379;
+const int SEED_Y_TOP = 74;
+const int SEED_Y_BOT = 404;
 const int SEED_H = 100;
 const int DY = 2;
 const int HEIGHT_OF_SUB = 20;

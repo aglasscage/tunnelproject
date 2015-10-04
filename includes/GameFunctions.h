@@ -25,26 +25,37 @@ void init()
 	IMG_Init((img_flags)&img_flags);
 }
 
-void eventHandler(Event & e, bool & quit, bool & checkMove)
+void eventHandler(Event & e, bool & quit)
 {
 	while(SDL_PollEvent(&e) != 0)
 	{
-		//User requests quit
+		//User requests IMG_Quit
+		if(e.type == SDL_QUIT)
+		{
+			quit = true;
+		}
+	}
+}
+
+void eventHandler(Event & e, bool & quit, bool & restart)
+{
+	while(SDL_PollEvent(&e) != 0)
+	{
+		//User requests IMG_Quit
 		if(e.type == SDL_QUIT)
 		{
 			quit = true;
 		}
 		else if(e.type == SDL_KEYDOWN)
-		{
+		{	
 			switch(e.key.keysym.sym)
 			{
 				case SDLK_SPACE:
-				checkMove = true;
-				break;
+					restart = true;
+					break;
 				
 				default:
-				std::cout << "Default Entered" << std::endl;
-				break;
+					break;
 			}
 		}
 	}

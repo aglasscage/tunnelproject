@@ -33,10 +33,10 @@ public:
         * the hit box slightly smaller than the image
         * (5 pixels smaller in each direction).
         */
-        for (int i = r.x + 5; i < r.x + r.w - 5; i++)
+        for (int i = r.x + 8; i < r.x + r.w - 8; i++)
         {
-            if (r.y + 5 < tWall[i].getY()
-                || r.y + r.h - 5 > bWall[i].getY())
+            if (r.y + 8 < tWall[i].getY()
+                || r.y + r.h - 8 > bWall[i].getY())
             {
                 return 0;
             }

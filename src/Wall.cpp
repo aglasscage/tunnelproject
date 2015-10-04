@@ -124,10 +124,13 @@ void Wall::draw(Renderer & g_renderer)
 	SDL_RenderDrawLine(g_renderer, getX(), getY(), getX2(), getY2());
 	/*
 	int y = getY();
+	int z;
 	do
 	{
 		SDL_RenderDrawPoint(g_renderer, getX(), y);
-		y > getY2() ? y-- : y++;
-	} while (y != getY2());
+		if (getO() == TOP) y--;
+		else y++;
+		std::cin >> z;
+	} while (y != 0 && y != 479);
 	*/
 }
